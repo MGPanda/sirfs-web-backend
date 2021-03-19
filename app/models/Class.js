@@ -10,6 +10,9 @@ const classSchema = mongoose.Schema({
     equippables: {
         type: Array,
     },
+    extra: {
+        type: String,
+    },
     skills: [
         [
             {
