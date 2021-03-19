@@ -14,10 +14,10 @@ function bootstrapping() {
         next();
     });
 
-    app.use(cors({
-        origin: config.server.netlify,
-        credentials: true,
-    }));
+    // app.use(cors({
+    //     origin: config.server.netlify,
+    //     credentials: true,
+    // }));
 
     app.use(express.json());
     app.use(express.urlencoded({
