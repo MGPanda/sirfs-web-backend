@@ -15,7 +15,7 @@ function bootstrapping() {
     });
 
     app.use(cors({
-        origin: 'netlify url',
+        origin: config.server.netlify,
         credentials: true,
     }));
 

@@ -2,6 +2,7 @@ const config = {
     server: {
         host: process.env.HOST || 'localhost',
         port: process.env.PORT || 5300,
+        netlify: process.env.NETLIFY_URL || 'https://sirfs-app.netlify.app',
     },
     db: {
         uri: process.env.DB_URI,
