@@ -11,7 +11,12 @@ const classSchema = mongoose.Schema({
         type: Array,
     },
     extra: {
-        type: String,
+        name: {
+            type: String,
+        },
+        description: {
+            type: String,
+        }
     },
     skills: [
         [
