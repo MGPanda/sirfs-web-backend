@@ -4,7 +4,7 @@ const routesClass = require('./routes/routesClass');
 
 const router = express.Router();
 
-router.use('/class', routesClass);
+router.use('/api/class', routesClass);
 
 module.exports = router;
 
