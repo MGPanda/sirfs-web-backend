@@ -8,7 +8,7 @@ function bootstrapping() {
     const app = express();
 
     app.use((req, res, next) => {
-        res.header('Access-Control-Allow-Methods', 'GET');
+        res.header('Access-Control-Allow-Methods', 'POST,GET,PATCH,DELETE');
         res.header('Access-Control-Allow-Credentials', true);
         res.header('Access-Control-Allow-Headers', 'Content-Type');
         next();
