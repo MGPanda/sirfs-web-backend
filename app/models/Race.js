@@ -10,8 +10,7 @@ const raceSchema = mongoose.Schema({
     description: {
         type: String,
     },
-    baseStats: [
-        {
+    baseStats: {
             fue: {
                 type: Number,
             },
@@ -42,8 +41,7 @@ const raceSchema = mongoose.Schema({
             enc: {
                 type: Number,
             },
-        }
-    ],
+        },
     skills: [
         {
             name: {
