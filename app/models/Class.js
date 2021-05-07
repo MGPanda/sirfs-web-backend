@@ -4,6 +4,9 @@ const classSchema = mongoose.Schema({
     name: {
         type: String,
     },
+    edition: {
+        type: String,
+    },
     description: {
         type: String,
     },
