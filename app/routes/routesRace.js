@@ -5,7 +5,7 @@ const raceController = require('../controllers/raceController');
 const routesRace = express.Router();
 
 routesRace.route('/')
-    // .post(raceController.postClass)
+    .post(raceController.postRace)
     .get(raceController.getRaces);
 
 routesRace.route('/id/:id')

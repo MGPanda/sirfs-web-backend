@@ -10,36 +10,40 @@ const raceSchema = mongoose.Schema({
     description: {
         type: String,
     },
-    baseFue: {
-        type: Number,
-    },
-    baseDes: {
-        type: Number,
-    },
-    basePun: {
-        type: Number,
-    },
-    baseInt: {
-        type: Number,
-    },
-    baseSab: {
-        type: Number,
-    },
-    baseAgi: {
-        type: Number,
-    },
-    baseVol: {
-        type: Number,
-    },
-    basePV: {
-        type: Number,
-    },
-    basePE: {
-        type: Number,
-    },
-    baseEnc: {
-        type: Number,
-    },
+    baseStats: [
+        {
+            fue: {
+                type: Number,
+            },
+            des: {
+                type: Number,
+            },
+            pun: {
+                type: Number,
+            },
+            int: {
+                type: Number,
+            },
+            sab: {
+                type: Number,
+            },
+            agi: {
+                type: Number,
+            },
+            vol: {
+                type: Number,
+            },
+            pv: {
+                type: Number,
+            },
+            pe: {
+                type: Number,
+            },
+            enc: {
+                type: Number,
+            },
+        }
+    ],
     skills: [
         {
             name: {
