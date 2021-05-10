@@ -10,7 +10,8 @@ routesUser.route('/')
 
 routesUser.route('/id/:id')
     .get(userController.getUser)
-.patch(userController.patchUser)
-.delete(userController.deleteUser);
+    .put(userController.putUser)
+    .patch(userController.patchUser)
+    .delete(userController.deleteUser);
 
 module.exports = routesUser;

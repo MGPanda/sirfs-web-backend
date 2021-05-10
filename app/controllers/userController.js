@@ -47,6 +47,17 @@ async function getUser(req, res) {
     }
 }
 
+async function putUser(req, res) {
+    try {
+        const modifiedUser = await User.findOneAndReplace({_id: req.params.id}, req.body);
+        res.json({
+            modified: modifiedUser,
+        });
+    } catch (e) {
+        handleError(e, res);
+    }
+}
+
 async function patchUser(req, res) {
     try {
         const modifiedUser = await User.findOneAndUpdate({_id: req.params.id}, req.body);
@@ -73,6 +84,7 @@ module.exports = {
     postUser,
     getUsers,
     getUser,
+    putUser,
     patchUser,
     deleteUser,
 };

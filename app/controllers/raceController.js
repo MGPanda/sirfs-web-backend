@@ -63,6 +63,17 @@ async function getRaceByEditionAndName(req, res) {
     }
 }
 
+async function putRace(req, res) {
+    try {
+        const modifiedRace = await Race.findOneAndReplace({_id: req.params.id}, req.body);
+        res.json({
+            modified: modifiedRace,
+        });
+    } catch (e) {
+        handleError(e, res);
+    }
+}
+
 async function patchRace(req, res) {
     try {
         const modifiedRace = await Race.findOneAndUpdate({_id: req.params.id}, req.body);
@@ -91,6 +102,7 @@ module.exports = {
     getRacesByEdition,
     getRace,
     getRaceByEditionAndName,
+    putRace,
     patchRace,
     deleteRace,
 };

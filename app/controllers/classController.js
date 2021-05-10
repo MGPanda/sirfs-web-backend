@@ -63,6 +63,17 @@ async function getClassByEditionAndName(req, res) {
     }
 }
 
+async function putClass(req, res) {
+    try {
+        const modifiedClass = await Class.findOneAndReplace({_id: req.params.id}, req.body);
+        res.json({
+            modified: modifiedClass,
+        });
+    } catch (e) {
+        handleError(e, res);
+    }
+}
+
 async function patchClass(req, res) {
     try {
         const modifiedClass = await Class.findOneAndUpdate({_id: req.params.id}, req.body);
@@ -91,6 +102,7 @@ module.exports = {
     getClassesByEdition,
     getClass,
     getClassByEditionAndName,
+    putClass,
     patchClass,
     deleteClass,
 };
