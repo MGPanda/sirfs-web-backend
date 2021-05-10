@@ -10,8 +10,8 @@ routesRace.route('/')
 
 routesRace.route('/id/:id')
     .get(raceController.getRace)
-// .patch(raceController.patchClass)
-// .delete(raceController.deleteClass);
+    .patch(raceController.patchRace)
+    .delete(raceController.deleteRace);
 
 routesRace.route('/:edition')
     .get(raceController.getRacesByEdition);

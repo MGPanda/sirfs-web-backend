@@ -1,6 +1,6 @@
 const bodyParser = require('body-parser');
 
-const router = require('../route');
+const router = require('../route')
 
 function expressLoader(app) {
     app.use(bodyParser.json());
