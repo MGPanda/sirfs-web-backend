@@ -10,7 +10,7 @@ routesClass.route('/')
 
 routesClass.route('/id/:id')
     .get(classController.getClass)
-    .put(classController.putRace)
+    .put(classController.putClass)
     .patch(classController.patchClass)
     .delete(classController.deleteClass);
 
