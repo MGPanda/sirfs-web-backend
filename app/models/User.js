@@ -28,13 +28,13 @@ const userSchema = mongoose.Schema({
 
 userSchema.method({
     checkPassword: function (plaintextPassword) {
-        return bcrypt.compareSync(plaintextPassword, this.password);
+        return bcrypt.compare(plaintextPassword, this.password);
     },
 });
 
 userSchema.pre('save', function (next) {
     if (this.password) {
-        this.password = bcrypt.hashSync(this.password, config.server.bcrypt.rounds);
+        this.password = bcrypt.hash(this.password, config.server.bcrypt.rounds);
     }
     next();
 });

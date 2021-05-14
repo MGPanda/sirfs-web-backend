@@ -52,8 +52,12 @@ async function getUser(req, res) {
     }
 }
 
+/**
+ * @param {String} email
+ * @returns {Promise}
+ */
 async function getUserByEmail(email) {
-    return User.find({email: email});
+    return User.findOne({email: email});
 }
 
 async function putUser(req, res) {
