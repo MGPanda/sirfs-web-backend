@@ -3,6 +3,13 @@ const config = {
         host: process.env.HOST || 'localhost',
         port: process.env.PORT || 5300,
         netlify: process.env.NETLIFY_URL || 'https://sirfs-app.netlify.app',
+        secret: process.env.SECRET || 'keyboardcat',
+        jwt: {
+            expiresIn: process.env.JWT_EXPIRES || '100m',
+        },
+        bcrypt: {
+            rounds: Number.parseInt(process.env.BCRYPT_ROUNDS) || 10,
+        }
     },
     db: {
         uri: process.env.DB_URI,
@@ -10,15 +17,3 @@ const config = {
 };
 
 module.exports = config;
-
-// const config = {
-//     server: {
-//         secret: process.env.SECRET || 'keyboardcat',
-//         bcrypt: {
-//             rounds: Number.parseInt(process.env.BYCRYPT_ROUNDS) || 10,
-//         },
-//         jwt: {
-//             expiresIn: process.env.JWT_EXPIRES || '100m',
-//         },
-//     },
-// };

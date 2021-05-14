@@ -6,16 +6,8 @@ const routesUser = require('./routes/routesUser');
 
 const router = express.Router();
 
+router.use('/', routesUser);
 router.use('/api/class', routesClass);
 router.use('/api/race', routesRace);
-router.use('/user', routesUser);
 
 module.exports = router;
-
-// router.use('/', routesUser);
-// router.route('/')
-//     .get((req, res) => {
-//         res.json({
-//             Mensaje: "welcome"
-//         });
-//     });

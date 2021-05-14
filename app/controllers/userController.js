@@ -1,5 +1,3 @@
-const bcrypt = require('bcrypt');
-
 const User = require('../models/User');
 
 const handleError = (e, res) => {
@@ -11,15 +9,22 @@ const handleError = (e, res) => {
 
 async function postUser(req, res) {
     try {
-        const data = req.body;
-        const saltPassword = await bcrypt.genSalt(10);
-        data.password = await bcrypt.hash(data.password, saltPassword);
-
-        const newUser = new User(data);
-        await newUser.save();
-        res.json({
-            added: newUser,
+        const newUser = new User(req.body);
+        const checkUser = await User.findOne({
+            email: newUser.email,
         });
+
+        if (checkUser && checkUser.email === newUser.email) {
+            res.json({
+                error: true,
+                user: newUser.email
+            });
+        } else {
+            await newUser.save();
+            res.json({
+                added: newUser,
+            });
+        }
     } catch (e) {
         handleError(e, res);
     }
@@ -45,6 +50,10 @@ async function getUser(req, res) {
     } catch (e) {
         handleError(e, res);
     }
+}
+
+async function getUserByEmail(email) {
+    return User.find({email: email});
 }
 
 async function putUser(req, res) {
@@ -84,6 +93,7 @@ module.exports = {
     postUser,
     getUsers,
     getUser,
+    getUserByEmail,
     putUser,
     patchUser,
     deleteUser,

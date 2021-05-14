@@ -26,18 +26,19 @@ const userSchema = mongoose.Schema({
     ]
 })
 
+userSchema.method({
+    checkPassword: function (plaintextPassword) {
+        return bcrypt.compareSync(plaintextPassword, this.password);
+    },
+});
+
+userSchema.pre('save', function (next) {
+    if (this.password) {
+        this.password = bcrypt.hashSync(this.password, config.server.bcrypt.rounds);
+    }
+    next();
+});
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
-// userSchema.pre('save', function (next) {
-//     if (this.password) {
-//         this.password = bcrypt.hashSync(this.password, config.server.bcrypt.rounds);
-//     }
-//     next();
-// });
-//
-// userSchema.method({
-//     checkPassword: function (plaintextPassword) {
-//         return bcrypt.compareSync(plaintextPassword, this.password);
-//     },
-// });
