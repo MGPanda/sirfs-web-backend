@@ -10,14 +10,23 @@ const handleError = (e, res) => {
 async function postUser(req, res) {
     try {
         const newUser = new User(req.body);
-        const checkUser = await User.findOne({
+        const checkUsername = await User.findOne({
+            username: newUser.username,
+        });
+
+        const checkEmail = await User.findOne({
             email: newUser.email,
         });
 
-        if (checkUser && checkUser.email === newUser.email) {
+        if (checkUsername && checkUsername.username === newUser.username) {
             res.json({
                 error: true,
-                user: newUser.email
+                username: newUser.username
+            });
+        } else if (checkEmail && checkEmail.email === newUser.email) {
+            res.json({
+                error: true,
+                email: newUser.email
             });
         } else {
             await newUser.save();

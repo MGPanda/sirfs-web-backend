@@ -9,8 +9,12 @@ const loginStrategy = new LocalStrategy(
     },
     function (req, email, password, done) {
         controller.userController.getUserByEmail(req.body.email).then(function (userFound) {
-            if (userFound.checkPassword(req.body.password)) {
-                return done(null, userFound);
+            if (userFound) {
+                if (userFound.checkPassword(req.body.password)) {
+                    return done(null, userFound);
+                } else {
+                    done(null, false);
+                }
             } else {
                 done(null, false);
             }
