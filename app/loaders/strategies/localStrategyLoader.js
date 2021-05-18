@@ -8,9 +8,9 @@ const loginStrategy = new LocalStrategy(
         passReqToCallback: true,
     },
     function (req, email, password, done) {
-        controller.userController.getUserByEmail(req.body.email).then(function (userFound) {
+        controller.userController.getUserByEmail(req.body.email).then(async function (userFound) {
             if (userFound) {
-                if (userFound.checkPassword(req.body.password)) {
+                if (await userFound.checkPassword(req.body.password)) {
                     return done(null, userFound);
                 } else {
                     done(null, false);
