@@ -13,6 +13,9 @@ const classSchema = mongoose.Schema({
     equippables: {
         type: Array,
     },
+    img: {
+        type: String,
+    },
     extra: {
         name: {
             type: String,
